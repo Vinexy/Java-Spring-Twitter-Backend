@@ -3,6 +3,7 @@ package com.project.questapp.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import com.project.questapp.responses.CommentResponse;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +31,7 @@ public class CommentController {
 	}
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping
-	public List<Comment> getAllComments(@RequestParam Optional<Long> userId, @RequestParam Optional<Long> postId){
+	public List<CommentResponse> getAllComments(@RequestParam Optional<Long> userId, @RequestParam Optional<Long> postId){
 		return commentService.getAllCommentsWithParam(userId,postId);
 	}
 	

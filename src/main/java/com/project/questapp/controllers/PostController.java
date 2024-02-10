@@ -34,15 +34,16 @@ public class PostController {
 	public List<PostResponse> getAllPosts(@RequestParam Optional<Long> userId){
 		return postService.getAllPosts(userId);
 	}
-	
-	@GetMapping("/{postId}")
-	public Post getOnePost(@PathVariable Long postId) {
-		return postService.getOnePostById(postId);
-	}
+
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping
 	public Post createOnePost(@RequestBody PostCreateRequest newPostRequest) {
 		return postService.createOnePost(newPostRequest);
+	}
+
+	@GetMapping("/{postId}")
+	public PostResponse getOnePost(@PathVariable Long postId){
+		return postService.getOnePostByIdWithLikes(postId);
 	}
 	
 	@PutMapping("/{postId}")
